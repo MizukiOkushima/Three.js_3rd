@@ -37,7 +37,7 @@ function App() {
     );
 
     // cameraの座標を変える
-    camera.position.set(0, 0, 9);
+    camera.position.set(-1.0, 1.0, 3.3);
 
     // renderer
     const renderer: THREE.WebGLRenderer = new THREE.WebGLRenderer({
@@ -67,7 +67,7 @@ function App() {
     gltfLoader.load("./models/scene.gltf", (gltf) => {
       model = gltf.scene;
       // 大きさ変更
-      model.scale.set(2, 2, 2);
+      model.scale.set(1.0, 1.0, 1.0);
       // 傾き 60度指定
       // model.rotation.y = -Math.PI / 3;
       scene.add(model);
