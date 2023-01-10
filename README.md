@@ -27,4 +27,5 @@ near から far までを描写する<br>
 第2引数：aspect x/yで画像の比率<br>
 第3引数：near カメラからnearまでの距離<br>
 第4引数：far カメラからfarまでの距離<br>
-https://intexsoft.com/app/uploads/2021/08/three-js-2.jpg
+<br>
+![three-js-2](https://user-images.githubusercontent.com/95268598/211558266-bb4ba279-b378-415e-b4f0-e13cd09583d0.jpg)
