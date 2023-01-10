@@ -1,8 +1,10 @@
 import './App.css'
 import * as THREE from "three";
 import { useEffect } from 'react';
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 
 function App() {
+  let model: THREE.Group;
 
   // useEffect ロード時に1回だけ発火させるため空の配列を引数に宣言する
   useEffect(() => {
@@ -34,30 +36,61 @@ function App() {
       1000
     );
 
+    // cameraの座標を変える
+    camera.position.set(0, 0, 9);
+
     // renderer
-    const renderer = new THREE.WebGLRenderer({
+    const renderer: THREE.WebGLRenderer = new THREE.WebGLRenderer({
       // 描写する場所を指定
       canvas: canvas,
       // antialias trueでギザギザがなめらかになる
       antialias: true,
+      // alpha 背景色の設定を可能にする 透明度を黒から取り除く意味
+      alpha: true,
     });
 
     // 描写するためのおきまり宣言
     renderer.setSize(size.width, size.height);
     renderer.setPixelRatio(window.devicePixelRatio);
 
-    // BOXの表示
-    const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-    const material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
-    const cube = new THREE.Mesh( geometry, material );
-    scene.add(cube);
+    // // BOXの表示
+    // const geometry = new THREE.BoxGeometry(1, 1, 1);
+    // // MeshBasicMaterial ライトの影響を受けない
+    // const material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+    // const cube = new THREE.Mesh( geometry, material );
+    // scene.add(cube);
+
+    // gltfLoader 3Dモデルのインポート
+    const gltfLoader = new GLTFLoader();
+
+    // 読み込み
+    gltfLoader.load("./models/scene.gltf", (gltf) => {
+      model = gltf.scene;
+      // 大きさ変更
+      model.scale.set(2, 2, 2);
+      // 傾き 60度指定
+      // model.rotation.y = -Math.PI / 3;
+      scene.add(model);
+    });
+
+    // tick アニメーション生成 フレームごとに何度も読み込む
+    const tick = () => {
+      // sceneとcameraを読み込む
+      renderer.render(scene, camera);
+      requestAnimationFrame(tick);
+    }
+    // tick 実行
+    tick();
 
   }, []);
 
   return (
     <>
       <canvas id="canvas"></canvas>
-      <div className="mainContent"></div>
+      <div className="mainContent">
+        <h3>SPY×FAMILY</h3>
+        <p>Bond Forger</p>
+      </div>
     </>
   );
 }

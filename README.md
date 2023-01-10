@@ -29,3 +29,7 @@ near から far までを描写する<br>
 第4引数：far カメラからfarまでの距離<br>
 <br>
 ![three-js-2](https://user-images.githubusercontent.com/95268598/211558266-bb4ba279-b378-415e-b4f0-e13cd09583d0.jpg)
+
+## 引用
+sketchfab.com<br>
+https://sketchfab.com/3d-models/bond-forger-from-spy-family-481783da76df4e419132062b77c1527b#download<br>
