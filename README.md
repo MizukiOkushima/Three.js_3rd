@@ -14,4 +14,17 @@ React と Typescript を選択<br>
 3. ローカルサーバーを立ち上げる<br>
 `npm run dev`<br>
 
+4. ライブラリThree.jsをインストール<br>
+`npm i three`<br>
 
+5. TypeScript用のモジュールをインストール<br>
+`npm i --save-dev @types/three`<br>
+
+## 補足
+### PerspectiveCameraについて
+near から far までを描写する<br>
+第1引数：fov 視野角<br>
+第2引数：aspect x/yで画像の比率<br>
+第3引数：near カメラからnearまでの距離<br>
+第4引数：far カメラからfarまでの距離<br>
+https://intexsoft.com/app/uploads/2021/08/three-js-2.jpg
